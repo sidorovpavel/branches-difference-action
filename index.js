@@ -10,13 +10,15 @@ async function run() {
     const base = getInput('base', { required: false });
     const head = getInput('head', { required: false });
 
-    console.log(123);
-
     const { context, getOctokit } = github;
 
     const { repo: { owner, repo } } = context;
 
+    console.log(repo);
+
     const { rest } = getOctokit(githubToken);
+
+    console.log(rest);
 
     const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
 
