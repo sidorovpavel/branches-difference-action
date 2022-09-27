@@ -18,7 +18,11 @@ async function run() {
 
     const { rest } = getOctokit(githubToken);
 
-    console.log(rest);
+    console.log({
+      owner,
+      repo,
+      pull_number: pullNumber,
+    });
 
     const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
 
