@@ -9,8 +9,10 @@ async function run() {
     const githubEmail = getInput('github-email', { required: true });
     const githubUser = getInput('github-user', { required: false });
     const pullNumber = getInput('pull-number', { required: false });
-    const base = getInput('branch-base', { required: false });
-    const head = getInput('branch-head', { required: false });
+    const base = getInput('base', { required: false });
+    const head = getInput('head', { required: false });
+
+    console.log(123);
 
     const { context, getOctokit } = github;
 

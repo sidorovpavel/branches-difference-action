@@ -19,10 +19,10 @@ inputs:
   pull-number:
     required: false
     description: "Number of pull request"
-  branch-base:
+  base:
     required: false
     description: "Base Branch"
-  branch-compare:
+  head:
     required: false
     description: "Branch compare"
   project-name:
