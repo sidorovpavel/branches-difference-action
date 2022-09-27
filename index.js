@@ -30,7 +30,7 @@ async function run() {
       pull_number: pullNumber,
     });
 
-    console.log(response);
+    console.log(base, head);
 
     const r = await rest.repos.compareCommits({
       owner,
