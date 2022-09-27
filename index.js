@@ -28,9 +28,8 @@ async function run() {
       ? await rest.pulls.listCommits({ owner, repo, pull_number: pullNumber })
       : await rest.repos.compareCommits({ owner, repo, base, head });
 
-    console.log( data.reduce(
-      (issues, item) => {
-        const names = item.commit.message.split('').reverse().join('').match(jiraMatcher);
+    console.log( data.reduce((issues, {commit}) => {
+        const names = commit.message.split('').reverse().join('').match(jiraMatcher);
         if (!names) {
           return issues;
         }
