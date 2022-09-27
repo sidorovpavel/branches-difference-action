@@ -1,9 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const {setOutput} = require("@actions/core");
 
 async function run() {
-  const { getInput, setFailed } = core;
+  const { getInput, setFailed, setOutput } = core;
   try {
     const githubToken = getInput('github-token', { required: true });
     const pullNumber = getInput('pull-number', { required: false });
