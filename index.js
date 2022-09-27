@@ -6,8 +6,6 @@ async function run() {
   const { getInput, setFailed } = core;
   try {
     const githubToken = getInput('github-token', { required: true });
-    const githubEmail = getInput('github-email', { required: true });
-    const githubUser = getInput('github-user', { required: false });
     const pullNumber = getInput('pull-number', { required: false });
     const base = getInput('base', { required: false });
     const head = getInput('head', { required: false });
