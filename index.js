@@ -11,24 +11,15 @@ async function run() {
     const head = getInput('head', { required: false });
 
     const { context, getOctokit } = github;
-
     const { repo: { owner, repo } } = context;
-
     const { rest } = getOctokit(githubToken);
-
-    console.log({
-      owner,
-      repo,
-      pull_number: pullNumber,
-    });
-
     const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
 
-    const { data } = pullNumber
+    const { data } = !pullNumber
       ? await rest.pulls.listCommits({ owner, repo, pull_number: pullNumber })
       : await rest.repos.compareCommits({ owner, repo, base, head });
 
-    const issues =  data.reduce((issues, {commit}) => {
+    const issues = data.reduce((issues, { commit }) => {
         const names = commit.message.split('').reverse().join('').match(jiraMatcher);
         if (!names) {
           return issues;
