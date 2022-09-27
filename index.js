@@ -1,0 +1,46 @@
+const core = require('@actions/core');
+const github = require('@actions/github');
+const {setOutput} = require("@actions/core");
+
+async function run() {
+  const { getInput, setFailed } = core;
+  try {
+    const githubToken = getInput('github-token', { required: true });
+    const githubEmail = getInput('github-email', { required: true });
+    const githubUser = getInput('github-user', { required: false });
+    const pullNumber = getInput('pull-number', { required: false });
+    const base = getInput('branch-base', { required: false });
+    const head = getInput('branch-head', { required: false });
+
+    const { context, getOctokit } = github;
+
+    const { repo: { owner, repo } } = context;
+
+    const { rest } = getOctokit(githubToken);
+
+    const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
+
+    const response = await rest.pulls.listCommits({
+      owner,
+      repo,
+      pull_number: pullNumber,
+    });
+
+    console.log(response);
+
+    const r = await rest.repos.compareCommits({
+      owner,
+      repo,
+      base,
+      head
+    });
+
+    console.log(r);
+
+   // setOutput()
+  } catch (err) {
+    setFailed(err.message);
+  }
+}
+
+run();
