@@ -23,6 +23,10 @@ inputs:
     required: true
     description: "Alias of Project"
 
+outputs:
+  issues:
+    description: "List of jira issues"
+
 runs:
   using: "node16"
   main: "./dist/index.js"
