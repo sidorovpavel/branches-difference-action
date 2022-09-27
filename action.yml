@@ -18,7 +18,7 @@ inputs:
     description: "Base Branch"
   head:
     required: false
-    description: "Branch compare"
+    description: "Branch for compare"
   project-name:
     required: true
     description: "Alias of Project"
