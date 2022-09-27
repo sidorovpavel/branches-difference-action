@@ -8,6 +8,7 @@
 
 ## Usage
 
+### Get issues from pull request
 ```yaml 
 - name: branches-difference-action
   id: cbranches-difference-action
@@ -15,12 +16,25 @@
   with:
     github-token: ${{secrets.TOKEN}}
     pull-number: '1'
+
+  - name: Get the output issues
+    run: echo "Issues: ${{ steps.commit-list-action.outputs.issues }}"      
+```
+
+### Get issues from branches compare
+```yaml 
+- name: branches-difference-action
+  id: cbranches-difference-action
+  uses: tangem/branches-difference-action@main
+  with:
+    github-token: ${{secrets.TOKEN}}
     base: 'main'
     head: 'test'
 
   - name: Get the output issues
     run: echo "Issues: ${{ steps.commit-list-action.outputs.issues }}"      
 ```
+
 
 ## Inputs
 | Name           | Requirement | Default | Description                      |
