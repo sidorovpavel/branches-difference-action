@@ -10,12 +10,6 @@ inputs:
   github-token:
     required: true
     description: "GitHub Token"
-  github-user:
-    required: false
-    description: "GitHub User"
-  github-email:
-    required: true
-    description: "GitHub Email"
   pull-number:
     required: false
     description: "Number of pull request"
