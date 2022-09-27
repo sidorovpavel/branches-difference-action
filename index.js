@@ -14,7 +14,7 @@ async function run() {
 
     const { repo: { owner, repo } } = context;
 
-    console.log(1);
+    console.log(githubToken, pullNumber, base, head);
 
     const { rest } = getOctokit(githubToken);
 
