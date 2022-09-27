@@ -14,11 +14,11 @@ async function run() {
 
     const { repo: { owner, repo } } = context;
 
-    console.log(repo);
+    console.log(1);
 
     const { rest } = getOctokit(githubToken);
 
-    console.log(rest);
+    console.log(2);
 
     const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
 
@@ -28,7 +28,7 @@ async function run() {
       pull_number: pullNumber,
     });
 
-    console.log(response);
+    console.log(3);
 
     const r = await rest.repos.compareCommits({
       owner,
@@ -37,7 +37,7 @@ async function run() {
       head
     });
 
-    console.log(r);
+    console.log(4);
 
    // setOutput()
   } catch (err) {
