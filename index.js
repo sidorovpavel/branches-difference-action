@@ -24,22 +24,11 @@ async function run() {
 
     const jiraMatcher = /\d+-[A-Z]+(?!-?[a-zA-Z]{1,10})/g;
 
-    const response = await rest.pulls.listCommits({
-      owner,
-      repo,
-      pull_number: pullNumber,
-    });
+    const {commits} = pullNumber
+      ? await rest.pulls.listCommits({ owner, repo, pull_number: pullNumber })
+      : await rest.repos.compareCommits({ owner, repo, base, head });
 
-    console.log(base, head);
-
-    const r = await rest.repos.compareCommits({
-      owner,
-      repo,
-      base,
-      head
-    });
-
-    console.log(r);
+    console.log(commits);
 
    // setOutput()
   } catch (err) {
