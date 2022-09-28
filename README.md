@@ -46,6 +46,6 @@
 
 
 ## Outputs
-| Name           | Requirement    | 
-|----------------|----------------|
-| `issues`       | list of issues |  
+| Name           | Requirement                           | 
+|----------------|---------------------------------------|
+| `issues`       | list of issues (JSON stringify array) |  
