@@ -33,7 +33,7 @@ async function run() {
             issues.push(id);
           }
         });
-        return issues;
+        return JSON.stringify(issues);
       },
       [],
     );
