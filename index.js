@@ -33,12 +33,12 @@ async function run() {
             issues.push(id);
           }
         });
-        return JSON.stringify(issues);
+        return issues;
       },
       [],
     );
 
-   setOutput('issues', issues);
+   setOutput('issues', JSON.stringify(issues));
   } catch (err) {
     setFailed(err.message);
   }
